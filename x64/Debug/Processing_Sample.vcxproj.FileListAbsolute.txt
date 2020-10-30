@@ -4,3 +4,5 @@ D:\snake\x64\Debug\Processing_Sample.exe
 D:\snake\x64\Debug\Processing_Sample.pdb
 C:\Users\Yih Fei\Desktop\DIGIPEN\Sem 1.1\Software Engineering Project 1 CSD1400\4PAC-Snake\4Pac-master\x64\Debug\Processing_Sample.exe
 C:\Users\Yih Fei\Desktop\DIGIPEN\Sem 1.1\Software Engineering Project 1 CSD1400\4PAC-Snake\4Pac-master\x64\Debug\Processing_Sample.pdb
+C:\Users\Yih Fei\Documents\GitHub\4Pac\x64\Debug\Processing_Sample.exe
+C:\Users\Yih Fei\Documents\GitHub\4Pac\x64\Debug\Processing_Sample.pdb

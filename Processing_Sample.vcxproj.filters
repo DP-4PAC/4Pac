@@ -13,10 +13,10 @@
       <Filter>Snake</Filter>
     </ClCompile>
     <ClCompile Include="src\main.c" />
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="src\Menu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
-    <ClCompile Include="GameOver.cpp">
+    <ClCompile Include="src\GameOver.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
   </ItemGroup>
@@ -24,10 +24,10 @@
     <ClInclude Include="src\Snake\Snake.h">
       <Filter>Snake</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
+    <ClInclude Include="src\Menu.h">
       <Filter>Menu</Filter>
     </ClInclude>
-    <ClInclude Include="GameOver.h">
+    <ClInclude Include="src\GameOver.h">
       <Filter>Menu</Filter>
     </ClInclude>
   </ItemGroup>
