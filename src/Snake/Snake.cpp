@@ -13,7 +13,7 @@
 
 float GridUnitWidth, GridUnitHeight; //each unti grid size
 float SnakeX, SnakeY; //position of snake
-int RandX, RandY, RandR, RandG, RandB; //random generator
+int RandX, RandY, RandRF, RandGF, RandBF, RandRS, RandGS, RandBS;//random generator
 float VelX, VelY; //velocity of snake
 int x, y; //running through 2D array
 CP_Vector SnakeTrail[MAX_TRAIL]; //store every position that is following the snake
@@ -48,28 +48,34 @@ float SnakeMovement(void)
 
 	if (VelY == 0)
 	{
-		if (CP_Input_KeyTriggered(KEY_DOWN))
+		if (SnakeY - VelY == (int)SnakeTrail[0].y)
 		{
-			VelX = 0;
-			VelY = 1;
-		}
-		if (CP_Input_KeyTriggered(KEY_UP))
-		{
-			VelX = 0;
-			VelY = -1;
+			if (CP_Input_KeyTriggered(KEY_DOWN))
+			{
+				VelX = 0;
+				VelY = 1;
+			}
+			if (CP_Input_KeyTriggered(KEY_UP))
+			{
+				VelX = 0;
+				VelY = -1;
+			}
 		}
 	}
 	if (VelX == 0)
 	{
-		if (CP_Input_KeyTriggered(KEY_LEFT))
+		if (SnakeX - VelX == (int)SnakeTrail[0].x)
 		{
-			VelX = -1;
-			VelY = 0;
-		}
-		if (CP_Input_KeyTriggered(KEY_RIGHT))
-		{
-			VelX = 1;
-			VelY = 0;
+			if (CP_Input_KeyTriggered(KEY_LEFT))
+			{
+				VelX = -1;
+				VelY = 0;
+			}
+			if (CP_Input_KeyTriggered(KEY_RIGHT))
+			{
+				VelX = 1;
+				VelY = 0;
+			}
 		}
 	}
 	return VelX, VelY;
@@ -96,9 +102,13 @@ void Snake_Init(void)
 	TotalTime = 0;
 	timer = 0; //initial timer
 	interval = 0.1f; //every half a seconds
-	RandR = CP_Random_RangeInt(1, 255);
-	RandG = CP_Random_RangeInt(1, 255);
-	RandB = CP_Random_RangeInt(1, 255);
+	RandRF = CP_Random_RangeInt(1, 255);
+	RandGF = CP_Random_RangeInt(1, 255);
+	RandBF = CP_Random_RangeInt(1, 255);
+	RandRS = 0;
+	RandGS = 255;
+	RandBS = 0;
+
 	Wall();
 }
 
@@ -108,6 +118,7 @@ void Snake_Update(void)
 	timer += CP_System_GetDt();
 	TotalTime += CP_System_GetDt();
 	grid[RandX][RandY] = FOOD;
+	
 	if (timer >= interval)
 	{
 		timer -= interval;
@@ -125,7 +136,7 @@ void Snake_Update(void)
 					}
 					if (grid[x][y] == FOOD && grid[x][y] != grid[(int)SnakeTrail[i].x][(int)SnakeTrail[i].y])
 					{
-						CP_Settings_Fill(CP_Color_Create(0, 255, 0, 255));
+						CP_Settings_Fill(CP_Color_Create(RandRF, RandGF, RandBF, 255));
 						DrawBlock();
 					}
 				}
@@ -140,14 +151,7 @@ void Snake_Update(void)
 		{
 			if (SnakeTrail[i].x != 0 && SnakeTrail[i].y != 0)
 			{
-				if (PreLength != SnakeLength)
-				{
-					RandR = CP_Random_RangeInt(1, 255);
-					RandG = CP_Random_RangeInt(1, 255);
-					RandB = CP_Random_RangeInt(1, 255);
-					PreLength = SnakeLength;
-				}
-				CP_Settings_Fill(CP_Color_Create(RandR, RandG, RandB, 255));
+				CP_Settings_Fill(CP_Color_Create(RandRS, RandGS, RandBS, 255));
 				CP_Graphics_DrawRect(SnakeTrail[i].x * GridUnitWidth, SnakeTrail[i].y * GridUnitHeight, GridUnitWidth, GridUnitHeight);
 			}
 		}
@@ -171,6 +175,12 @@ void Snake_Update(void)
 		grid[RandX][RandY] = 0;
 		RandX = CP_Random_RangeInt(1, GRID_WIDTH - 2);
 		RandY = CP_Random_RangeInt(1, GRID_HEIGHT - 2);
+		RandRS = RandRF;
+		RandGS = RandGF;
+		RandBS = RandBF;
+		RandRF = CP_Random_RangeInt(1, 255);
+		RandGF = CP_Random_RangeInt(1, 255);
+		RandBF = CP_Random_RangeInt(1, 255);
 		Score += 5;
 		interval -= (float)0.003;
 	}
