@@ -9,15 +9,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Snake\Snake.cpp">
-      <Filter>Snake</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.c" />
-    <ClCompile Include="src\Menu.cpp">
+    <ClCompile Include="src\Menu.c">
       <Filter>Menu</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameOver.cpp">
+    <ClCompile Include="src\GameOver.c">
       <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Snake\Snake.c">
+      <Filter>Snake</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\GameOver.cpp" />
+    <ClCompile Include="src\GameOver.c" />
     <ClCompile Include="src\main.c" />
-    <ClCompile Include="src\Menu.cpp" />
-    <ClCompile Include="src\Snake\Snake.cpp" />
+    <ClCompile Include="src\Menu.c" />
+    <ClCompile Include="src\Snake\Snake.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameOver.h" />
